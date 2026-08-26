@@ -244,6 +244,12 @@
   <script>
     // Les données sont sérialisées depuis la vue Django (core/views.py)
     const endpointsData = {{ endpoints_json|safe }};
+    window.endpointsData = {{ endpoints_json|safe }};
+  console.log('Données injectées :', window.endpointsData);
+  if (!window.endpointsData || Object.keys(window.endpointsData).length === 0) {
+    console.warn('Aucune donnée reçue – vérifiez le contexte Django');
+  }
+    console.log('=== endpointsData ===', endpointsData);
   </script>
 
   <!-- ===== SCRIPTS ===== -->
